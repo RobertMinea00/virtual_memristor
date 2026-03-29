@@ -1,0 +1,10 @@
+# Benchmark configuration
+seed: 42
+samples_per_class_before_new: 50   # samples shown per class before adding a new one
+adaptation_threshold: 0.80         # accuracy target for "adapted" declaration
+metrics_log_interval: 10           # log metrics every N samples
+
+baselines:
+  frozen_linear: true
+  mlp_sgd: true
+  cnn_online: true

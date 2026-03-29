@@ -1,0 +1,13 @@
+# Network architecture
+input_dim: 63          # 21 landmarks * 3 (x, y, z), translation+scale normalised
+hidden_dims: [256, 128]
+initial_classes: 5     # number of signs known before live demo starts
+
+training:
+  lr: 0.001
+  online_batch_size: 4
+  replay_batch_size: 8
+  replay_buffer_size: 500
+  use_ewc: true
+  ewc_lambda: 400.0
+  use_replay: true

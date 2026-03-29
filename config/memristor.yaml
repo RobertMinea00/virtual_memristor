@@ -1,0 +1,22 @@
+# Memristor device physics parameters
+# Set any sigma/nu to 0 to disable that effect (useful for ablations)
+
+device:
+  g_min: 1.0e-6        # minimum conductance (S)  — HfO2 LRS off-state
+  g_max: 1.0e-4        # maximum conductance (S)  — HfO2 LRS on-state
+  n_levels: 32         # number of discrete conductance states (0 = infinite)
+
+noise:
+  sigma_write: 0.05    # write noise: fraction of delta_G per step
+  sigma_read: 0.01     # read noise: relative std dev per inference call
+  sigma_d2d: 0.02      # device-to-device variability: relative std dev (fixed at init)
+
+drift:
+  nu: 0.012            # drift exponent (power law: G(t) = G0*(t/t0)^-nu)
+  t0: 1.0              # reference time in seconds
+  update_every_n: 30   # recompute drift every N forward passes
+
+crossbar:
+  tile_size: 128       # crossbar array tile size (rows = cols = tile_size)
+  adc_bits: 8          # ADC resolution for output current
+  dac_bits: 8          # DAC resolution for input voltage

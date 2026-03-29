@@ -1,0 +1,16 @@
+# PyTorch with CUDA 12.6 (compatible with driver 581.57 / CUDA 13.0 runtime)
+--index-url https://download.pytorch.org/whl/cu126
+torch>=2.6.0
+torchvision>=0.21.0
+
+# Hand landmark extraction
+mediapipe>=0.10.18
+
+# Computer vision
+opencv-python>=4.10.0
+
+# Utilities
+numpy>=2.0.0
+pyyaml>=6.0
+matplotlib>=3.9.0
+tqdm>=4.66.0
