@@ -9,5 +9,5 @@ training:
   replay_batch_size: 8
   replay_buffer_size: 500
   use_ewc: true
-  ewc_lambda: 400.0
+  ewc_lambda: 50.0
   use_replay: true

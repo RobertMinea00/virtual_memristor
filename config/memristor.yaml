@@ -4,7 +4,7 @@
 device:
   g_min: 1.0e-6        # minimum conductance (S)  — HfO2 LRS off-state
   g_max: 1.0e-4        # maximum conductance (S)  — HfO2 LRS on-state
-  n_levels: 32         # number of discrete conductance states (0 = infinite)
+  n_levels: 64         # number of discrete conductance states (0 = infinite)
 
 noise:
   sigma_write: 0.05    # write noise: fraction of delta_G per step

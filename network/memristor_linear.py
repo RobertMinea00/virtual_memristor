@@ -104,7 +104,16 @@ class MemristorLinear(nn.Module):
                 self.dm.apply_drift(self.G_neg, self.G_neg_at_write, elapsed)
             )
 
-        # Crossbar forward (includes read noise + d2d)
+        # During training: use shadow weights directly so gradients are clean.
+        # Read noise + d2d variability only affect inference (eval mode).
+        # This matches standard hardware-aware training practice.
+        if self.training:
+            out = torch.nn.functional.linear(
+                x, self.mapper.decode(self.G_pos, self.G_neg), self.bias
+            )
+            return out
+
+        # Inference: full crossbar simulation with read noise + d2d
         out = self.crossbar.forward(
             x, self.G_pos, self.G_neg,
             self.d2d_pos, self.d2d_neg,
@@ -114,7 +123,6 @@ class MemristorLinear(nn.Module):
 
         if self.bias is not None:
             out = out + self.bias
-
         return out
 
     # ------------------------------------------------------------------
