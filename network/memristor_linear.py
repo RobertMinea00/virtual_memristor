@@ -108,9 +108,7 @@ class MemristorLinear(nn.Module):
         # Read noise + d2d variability only affect inference (eval mode).
         # This matches standard hardware-aware training practice.
         if self.training:
-            out = torch.nn.functional.linear(
-                x, self.mapper.decode(self.G_pos, self.G_neg), self.bias
-            )
+            out = torch.nn.functional.linear(x, self.W_shadow, self.bias)
             return out
 
         # Inference: full crossbar simulation with read noise + d2d
